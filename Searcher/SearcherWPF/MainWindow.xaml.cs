@@ -20,9 +20,13 @@ namespace SearcherWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        protected static List<WebSite> Sites;
         public MainWindow()
         {
             InitializeComponent();
+            //SitesListView.Items.Add("123");   // add site to list
+            //TopicsListView.Items.Add(new object {});
+            
         }
     }
 }

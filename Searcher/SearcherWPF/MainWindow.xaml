@@ -1,36 +1,53 @@
-﻿<Window x:Class="SearcherWPF.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="400" Width="600">
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="SearcherWPF.MainWindow"
+        Title="Searcher (:" Height="400" Width="600">
     <DockPanel LastChildFill="True">
-<Menu DockPanel.Dock="Top" HorizontalAlignment="Left">
+        <Menu DockPanel.Dock="Top" HorizontalAlignment="Left">
             <MenuItem Header="_File" />
             <MenuItem Header="_Edit">
                 <MenuItem Command ="ApplicationCommands.Copy"/>
                 <MenuItem Command ="ApplicationCommands.Cut"/>
                 <MenuItem Command ="ApplicationCommands.Paste"/>
+                <MenuItem Header="Configuration" />
             </MenuItem>
-            <MenuItem Header="_View" />
-            <MenuItem Header="_Window" />
-            <MenuItem Header="_Help" />
+            <MenuItem Header="_About" />
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem HorizontalAlignment="Left">
-                <TextBlock Name="StatusBar" Text="Ready"/>
+                <TextBlock x:Name="StatusBar" Text="Ready"/>
             </StatusBarItem>
             <StatusBarItem HorizontalAlignment="Right">
-                <TextBlock Name="ThreadCount" Text="Threads in process: "/>
+                <TextBlock x:Name="ThreadCount" Text="Threads in process: "/>
             </StatusBarItem>
         </StatusBar>
+
+        <DockPanel DockPanel.Dock="Top" LastChildFill="True">
+            <Label DockPanel.Dock="Left" Content="Site List" />
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Bottom" LastChildFill="True">
+            <Label DockPanel.Dock="Left" Content="Filters"/>
+            <Button DockPanel.Dock="Right" x:Name="SaveFilter" Content="Save"/>
+            <TextBox Background="LightCyan"/>
+        </DockPanel>
+
         <Grid>
             <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="auto"></ColumnDefinition>
-            <ColumnDefinition Width="2.75*"></ColumnDefinition>
+                <ColumnDefinition Width="*" MaxWidth="250" MinWidth="100"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="2.75*"/>
             </Grid.ColumnDefinitions>
-            <ListView Name="SitesListView" Grid.Column="0"></ListView>
-            <GridSplitter Grid.Row="0" Grid.Column="1" Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Center"></GridSplitter>
-            <ListView Name="TopicsListView" Grid.Column="2"></ListView>
+            <ListView x:Name="SitesListView" Grid.Column="0"/>
+            <GridSplitter Grid.Row="0" Grid.Column="1" Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Center"/>
+            <ListView x:Name="TopicsListView" Grid.Column="2">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Title"/>
+                        <GridViewColumn Header="Link"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </Grid>
     </DockPanel>
 </Window>
