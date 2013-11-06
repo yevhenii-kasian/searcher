@@ -1,0 +1,36 @@
+﻿<Window x:Class="SearcherWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="400" Width="600">
+    <DockPanel LastChildFill="True">
+<Menu DockPanel.Dock="Top" HorizontalAlignment="Left">
+            <MenuItem Header="_File" />
+            <MenuItem Header="_Edit">
+                <MenuItem Command ="ApplicationCommands.Copy"/>
+                <MenuItem Command ="ApplicationCommands.Cut"/>
+                <MenuItem Command ="ApplicationCommands.Paste"/>
+            </MenuItem>
+            <MenuItem Header="_View" />
+            <MenuItem Header="_Window" />
+            <MenuItem Header="_Help" />
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem HorizontalAlignment="Left">
+                <TextBlock Name="StatusBar" Text="Ready"/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock Name="ThreadCount" Text="Threads in process: "/>
+            </StatusBarItem>
+        </StatusBar>
+        <Grid>
+            <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="2.75*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ListView Name="SitesListView" Grid.Column="0"></ListView>
+            <GridSplitter Grid.Row="0" Grid.Column="1" Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Center"></GridSplitter>
+            <ListView Name="TopicsListView" Grid.Column="2"></ListView>
+        </Grid>
+    </DockPanel>
+</Window>

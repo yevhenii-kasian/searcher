@@ -1,0 +1,13 @@
+D:\projz\searcher\Searcher\SearcherWPF\bin\Debug\SearcherWPF.exe.config
+D:\projz\searcher\Searcher\SearcherWPF\bin\Debug\SearcherWPF.exe
+D:\projz\searcher\Searcher\SearcherWPF\bin\Debug\SearcherWPF.pdb
+D:\projz\searcher\Searcher\SearcherWPF\obj\Debug\SearcherWPF.csprojResolveAssemblyReference.cache
+D:\projz\searcher\Searcher\SearcherWPF\obj\Debug\MainWindow.baml
+D:\projz\searcher\Searcher\SearcherWPF\obj\Debug\MainWindow.g.cs
+D:\projz\searcher\Searcher\SearcherWPF\obj\Debug\App.g.cs
+D:\projz\searcher\Searcher\SearcherWPF\obj\Debug\SearcherWPF_MarkupCompile.cache
+D:\projz\searcher\Searcher\SearcherWPF\obj\Debug\SearcherWPF.g.resources
+D:\projz\searcher\Searcher\SearcherWPF\obj\Debug\SearcherWPF.Properties.Resources.resources
+D:\projz\searcher\Searcher\SearcherWPF\obj\Debug\SearcherWPF.csproj.GenerateResource.Cache
+D:\projz\searcher\Searcher\SearcherWPF\obj\Debug\SearcherWPF.exe
+D:\projz\searcher\Searcher\SearcherWPF\obj\Debug\SearcherWPF.pdb
