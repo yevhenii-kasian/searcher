@@ -1,0 +1,6 @@
+D:\projz\searcher\Searcher\tmp\bin\Debug\tmp.exe.config
+D:\projz\searcher\Searcher\tmp\bin\Debug\tmp.exe
+D:\projz\searcher\Searcher\tmp\bin\Debug\tmp.pdb
+D:\projz\searcher\Searcher\tmp\obj\Debug\tmp.csprojResolveAssemblyReference.cache
+D:\projz\searcher\Searcher\tmp\obj\Debug\tmp.exe
+D:\projz\searcher\Searcher\tmp\obj\Debug\tmp.pdb
