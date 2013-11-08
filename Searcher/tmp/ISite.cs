@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace tmp
 {
@@ -9,6 +10,6 @@ namespace tmp
         string SiteUri { get; set; } // site uri
         Dictionary<string, string> TopicDictionary { get; set; } //dict of topics (topicname - url) || (topicname - url)
 
-        Dictionary<string, string> Checker(); // for async
+        Dictionary<string, string> Checker(); // for async threds --- у кожного класа сайта своя реалізація
     }
 }

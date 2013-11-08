@@ -6,6 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace tmp
 {
+    // допоміжниій клас для зберігання і відкривання списку сутністей всіх сайтів (зберігаються )
     static class SitesIo
     {
         public static void SaveToBin(List<ISite> siteList)
