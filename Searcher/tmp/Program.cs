@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -8,60 +8,51 @@ namespace tmp
     {
         static void Main()
         {
+            List<ISite> siteList = new List<ISite>();
 
-            List<ISite> siteList = new List<ISite>(); // список сайтів
-
-
-            //створили один сайт -- 0day
             MyClass m = new MyClass();
             m.Name = "site 1";
             m.Filter = "filter 1";
             siteList.Add(m);
 
-            //створили 2й сайт -- сландо
             MyClass2 m2 = new MyClass2 { Name = "site 2", Filter = "filter 2" };
             siteList.Add(m2);
 
-            Task<Dictionary<string, string>>[] tasks = new Task<Dictionary<string, string>>[2]; // порахували скільки елементів в списку --- ListView.Count; ---  у нас зараз 2 елемента. Для кожного хуярим свій асинхронний поток
+            Task<Dictionary<string, string>>[] tasks = new Task<Dictionary<string, string>>[2];
             for (int i = 0; i < 2; i++)
             {
-                tasks[i] = Task<Dictionary<string, string>>.Factory.StartNew(siteList[i].Checker); // кожного запускаэмо метод в якому виконується вся логіка
+                tasks[i] = Task<Dictionary<string, string>>.Factory.StartNew(siteList[i].Checker);
             }
-            Task.WaitAll(tasks); // чекаємо завершення задач-потоків
+            Task.WaitAll(tasks); // think about :)
 
-            // виводимо кудись всю цю муть гуі чи ще куди
-            foreach (var task in tasks)
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            for (int i = 0; i < siteList.Count; i++)
             {
-                Dictionary<string, string> res = task.Result;
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                foreach (var re in res)
+                Console.WriteLine(siteList[i].Name + "\t" + siteList[i].Filter);
+                foreach (var task in tasks[i].Result)
                 {
-                    Console.WriteLine(m.Name + "\t" + m.Filter);
-                    Console.WriteLine(re.Key + "\t" + re.Value);
-                    Console.WriteLine(new string('_', 30) + "\n");
+                    Console.WriteLine("\t" + "--> " + task.Key + "\t" + task.Value);
                 }
+                Console.WriteLine(new string('_', 30) + "\n");
             }
-            // закрили прогу і зберігли
             SitesIo.SaveToBin(siteList);
             ///////////////////////////
-            // відкрили прогу і прочитали з файлу
             List<ISite> sites = SitesIo.OpenBin();
-            // вивели
             Console.ForegroundColor = ConsoleColor.Green;
             foreach (var site in sites)
             {
                 Console.WriteLine(site.Name + "\t" + site.Filter);
                 foreach (var s in site.TopicDictionary)
                 {
-                    Console.WriteLine(s.Key + "\t" + s.Value);
+                    Console.WriteLine("\t" + "--> " + s.Key + "\t" + s.Value);
                 }
                 Console.WriteLine(new string('_', 30) + "\n");
             }
 
         }
     }
-    // перший сайт
-    [Serializable] // обов'язковий атрибут, щоб сутність сайту зберігалась в файл
+    [Serializable]
     class MyClass : ISite
     {
         public string Name { get; set; }
@@ -71,14 +62,13 @@ namespace tmp
 
         public Dictionary<string, string> Checker()
         {
-            // логіка робити і фільтрування
             TopicDictionary = new Dictionary<string, string>();
             TopicDictionary["topic site 111"] = "url for topic site 111";
-            // + всі інші топіки
+            TopicDictionary["topic site 111----2"] = "url for topic site 111----2";
+            TopicDictionary["topic site 111----3"] = "url for topic site 111----3";
             return TopicDictionary;
         }
     }
-    // другий сайт
     [Serializable]
     class MyClass2 : ISite
     {
@@ -91,7 +81,6 @@ namespace tmp
         {
             TopicDictionary = new Dictionary<string, string>();
             TopicDictionary["topic site 222"] = "url for topic site 222";
-            // + всі інші топіки
             return TopicDictionary;
         }
     }

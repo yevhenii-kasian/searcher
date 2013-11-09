@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SearcherWPF
 {
-    interface ISite
+    interface ISiteInterface
     {
         string ReturnFilter();
         string ReturnName();
